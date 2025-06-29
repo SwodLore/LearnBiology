@@ -1,43 +1,94 @@
-import React, { useEffect, useRef, useState } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  createContext,
+  useContext,
+} from 'react';
 import { Outlet } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+// Contexto para progreso
+interface ProgresoContextType {
+  total: number;
+  actual: number;
+  setProgreso: (actual: number, total: number) => void;
+}
+const ProgresoContext = createContext<ProgresoContextType>({
+  total: 0,
+  actual: 0,
+  setProgreso: () => {},
+});
+
+export const useProgreso = () => useContext(ProgresoContext);
 
 export const Layout = () => {
   const [tiempo, setTiempo] = useState(0);
   const [puntos, setPuntos] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Cronómetro global
+  const [progreso, setProgresoState] = useState({ actual: 0, total: 0 });
+  const setProgreso = (actual: number, total: number) =>
+    setProgresoState({ actual, total });
+
+  const porcentaje = progreso.total > 0 ? Math.round((progreso.actual / progreso.total) * 100) : 0;
+
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setTiempo((t) => t + 1);
-    }, 1000);
+    intervalRef.current = setInterval(() => setTiempo((t) => t + 1), 1000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
 
-  // Leer puntos de localStorage si se usan globalmente
   useEffect(() => {
     const puntosGuardados = localStorage.getItem('puntos');
     if (puntosGuardados) setPuntos(Number(puntosGuardados));
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-200 to-blue-200 relative">
-      {/* Cronómetro y puntuación global */}
-      <div className="absolute top-4 right-8 flex items-center gap-6 z-50">
-        <div className="bg-white/80 rounded-lg px-4 py-2 shadow text-green-900 font-semibold flex items-center gap-2">
-          <span>⏱️</span>
-          <span>{tiempo}s</span>
+    <ProgresoContext.Provider value={{ ...progreso, setProgreso }}>
+      <div className="min-h-screen bg-gradient-to-br from-green-200 to-blue-100">
+        
+        {/* Barra superior con progreso, tiempo y puntos */}
+        <div className="w-full bg-green-600 py-3 px-6 flex justify-between items-center fixed top-0 left-0 z-50 shadow-md">
+          {/* Progreso circular */}
+          <div className="w-14 h-14">
+            <CircularProgressbarWithChildren
+              value={porcentaje}
+              styles={buildStyles({
+                pathColor: '#fff',
+                trailColor: '#ffffff33',
+              })}
+            >
+              <div className="text-white text-sm font-semibold">{porcentaje}%</div>
+            </CircularProgressbarWithChildren>
+          </div>
+
+          {/* Cronómetro y puntos */}
+          <div className="flex items-center gap-4 text-white font-semibold text-lg">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⏱️</span>
+              <span>{tiempo}s</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⭐</span>
+              <span>{puntos}</span>
+            </div>
+          </div>
         </div>
-        <div className="bg-white/80 rounded-lg px-4 py-2 shadow text-green-900 font-semibold flex items-center gap-2">
-          <span>⭐</span>
-          <span>{puntos}</span>
-        </div>
+
+        {/* Contenido renderizado */}
+        <motion.div
+          className="pt-24 px-4 pb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <Outlet />
+        </motion.div>
       </div>
-      <div className="pt-20">
-        <Outlet />
-      </div>
-    </div>
+    </ProgresoContext.Provider>
   );
-}; 
+};
