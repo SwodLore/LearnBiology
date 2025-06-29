@@ -170,7 +170,6 @@ export const PreguntasMicrobiologia = () => {
         <button
           className="flex items-center gap-2 text-lime-800 font-semibold hover:underline hover:text-lime-900 transition"
           onClick={() => {
-            localStorage.removeItem('puntos');
             navigate('/temas');
             window.location.reload();
           }}

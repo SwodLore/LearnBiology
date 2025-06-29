@@ -172,7 +172,6 @@ export const PreguntasSistemaDigestivo = () => {
         <button
           className="flex items-center gap-2 text-yellow-800 font-semibold hover:underline hover:text-yellow-900 transition"
           onClick={() => {
-            localStorage.removeItem('puntos');
             navigate('/temas');
             window.location.reload();
           }}

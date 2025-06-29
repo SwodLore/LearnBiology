@@ -50,7 +50,7 @@ export const Home = () => {
 
         {/* Título principal */}
         <h1 className="text-4xl font-bold mb-2 text-green-900 text-center leading-snug drop-shadow">
-          ¡Bienvenido a <span className="text-green-600">learnBiology</span>!
+          ¡Bienvenido a <span className="text-green-600">bioaventura</span>!
         </h1>
 
         {/* Texto o formulario */}

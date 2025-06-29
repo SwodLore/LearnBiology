@@ -14,72 +14,73 @@ const preguntasOriginales = [
     opciones: ['ADN', 'ARN', 'Proteína', 'Lípido'],
     respuesta: 'ADN',
     pista: 'Tiene forma de doble hélice.',
-    imagen: 'https://cdn.pixabay.com/photo/2016/03/31/19/14/dna-1299821_1280.png',
+    imagen: 'https://img.freepik.com/vector-gratis/personaje-dibujos-animados-nina-cientifica-equipos-laboratorio_1308-102788.jpg?semt=ais_items_boosted&w=740',
   },
   {
     pregunta: '¿Cómo se llama la unidad básica de la herencia?',
     opciones: ['Gen', 'Cromosoma', 'Núcleo', 'Alelo'],
     respuesta: 'Gen',
     pista: 'Es un segmento de ADN que codifica una característica.',
-    imagen: 'https://cdn.pixabay.com/photo/2017/01/31/13/14/dna-2029366_1280.png',
+    imagen: 'https://img.freepik.com/vector-gratis/concepto-biologia-iconos-dibujos-animados-ciencia-retro_1284-7504.jpg',
   },
   {
     pregunta: '¿Cuántos cromosomas tiene el ser humano normalmente?',
     opciones: ['46', '23', '44', '92'],
     respuesta: '46',
     pista: 'Son 23 pares.',
-    imagen: 'https://cdn.pixabay.com/photo/2012/04/13/00/22/chromosome-31228_1280.png',
+    imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpiv0pbqxo3xa-gILT6FhqFOAVTpMz-XCIiw&s',
   },
   {
     pregunta: '¿Cómo se llama el proceso por el cual el ADN se copia a ARN?',
     opciones: ['Transcripción', 'Traducción', 'Replicación', 'Mutación'],
     respuesta: 'Transcripción',
     pista: 'Es el primer paso para sintetizar proteínas.',
-    imagen: 'https://cdn.pixabay.com/photo/2016/03/31/19/14/dna-1299821_1280.png',
+    imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuC2ozn852T6jofKaEeFIU8GckE-t10uj65A&s',
   },
   {
     pregunta: '¿Qué es un alelo?',
     opciones: ['Una variante de un gen', 'Un tipo de célula', 'Una proteína', 'Un cromosoma'],
     respuesta: 'Una variante de un gen',
     pista: 'Puede ser dominante o recesivo.',
-    imagen: 'https://cdn.pixabay.com/photo/2017/01/31/13/14/dna-2029366_1280.png',
+    imagen: 'https://cdn.pixabay.com/photo/2017/02/09/11/21/dna-2059441_1280.png',
   },
   {
     pregunta: '¿Cómo se llama el cambio en la secuencia del ADN?',
     opciones: ['Mutación', 'Transcripción', 'Traducción', 'Duplicación'],
     respuesta: 'Mutación',
     pista: 'Puede ser beneficiosa, neutra o perjudicial.',
-    imagen: 'https://cdn.pixabay.com/photo/2012/04/13/00/22/chromosome-31228_1280.png',
+    imagen: 'https://cdn.pixabay.com/photo/2020/05/21/03/17/dna-5199210_1280.jpg',
   },
   {
     pregunta: '¿Qué científico es conocido como el padre de la genética?',
     opciones: ['Gregor Mendel', 'Charles Darwin', 'James Watson', 'Rosalind Franklin'],
     respuesta: 'Gregor Mendel',
     pista: 'Estudió los guisantes y las leyes de la herencia.',
-    imagen: 'https://cdn.pixabay.com/photo/2016/03/31/19/14/dna-1299821_1280.png',
+    imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Gregor_Mendel_2.jpg/800px-Gregor_Mendel_2.jpg',
   },
   {
     pregunta: '¿Qué es un fenotipo?',
     opciones: ['La manifestación observable de un gen', 'La secuencia de ADN', 'El número de cromosomas', 'Un tipo de mutación'],
     respuesta: 'La manifestación observable de un gen',
     pista: 'Es lo que se puede ver, como el color de ojos.',
-    imagen: 'https://cdn.pixabay.com/photo/2017/01/31/13/14/dna-2029366_1280.png',
+    imagen: 'https://cdn.pixabay.com/photo/2017/05/15/15/36/eye-2319839_1280.jpg',
   },
   {
     pregunta: '¿Qué bases nitrogenadas forman el ADN?',
     opciones: ['Adenina, Timina, Citosina, Guanina', 'Adenina, Uracilo, Citosina, Guanina', 'Adenina, Timina, Citosina, Uracilo', 'Adenina, Guanina, Uracilo, Timina'],
     respuesta: 'Adenina, Timina, Citosina, Guanina',
     pista: 'Son cuatro letras: A, T, C y G.',
-    imagen: 'https://cdn.pixabay.com/photo/2016/03/31/19/14/dna-1299821_1280.png',
+    imagen: 'https://cdn.pixabay.com/photo/2017/03/23/05/13/dna-2165955_1280.png',
   },
   {
     pregunta: '¿Qué es un cariotipo?',
     opciones: ['El conjunto de cromosomas de un individuo', 'Un tipo de gen', 'Una mutación', 'Una proteína'],
     respuesta: 'El conjunto de cromosomas de un individuo',
     pista: 'Se representa en un gráfico ordenado por pares.',
-    imagen: 'https://cdn.pixabay.com/photo/2012/04/13/00/22/chromosome-31228_1280.png',
+    imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Karyotype_Chromosomes.png/640px-Karyotype_Chromosomes.png',
   },
 ];
+
 
 function shuffleArray(array: any[]) {
   const arr = [...array];
@@ -172,7 +173,6 @@ export const PreguntasGenetica = () => {
         <button
           className="flex items-center gap-2 text-purple-800 font-semibold hover:underline hover:text-purple-900 transition"
           onClick={() => {
-            localStorage.removeItem('puntos');
             navigate('/temas');
             window.location.reload();
           }}

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Howl } from 'howler';
 import { useProgreso } from '../Layout';
 import BioBuddy from '../../components/BioBuddy';
-
+import { usePuntaje } from '../../context/PuntajeContext';
 const correcto = new Howl({ src: ['/sounds/win.mp3'] });
 const incorrecto = new Howl({ src: ['/sounds/lose.mp3'] });
 
@@ -98,6 +98,8 @@ export const PreguntasSistemaNervioso = () => {
   const navigate = useNavigate();
   const [preguntas] = useState(() => shuffleArray(preguntasOriginales));
   const { setProgreso } = useProgreso();
+  const { puntos, setPuntos } = usePuntaje();
+  
 
   useEffect(() => {
     const progresoAnterior = JSON.parse(localStorage.getItem('progreso') || '[]');
@@ -115,8 +117,7 @@ export const PreguntasSistemaNervioso = () => {
     if (opcion === preguntaActual.respuesta) {
       correcto.play();
       setFelicitando(true);
-      const puntos = Number(localStorage.getItem('puntos') || '0') + 10;
-      localStorage.setItem('puntos', puntos.toString());
+      setPuntos((puntosAnteriores) => puntosAnteriores + 10);
       setTimeout(() => {
         setFelicitando(false);
         setRespuestaSeleccionada('');
@@ -134,7 +135,6 @@ const opciones = useMemo(() => {
 }, [preguntaActual]);
 
 if (!preguntaActual) {
-  const puntos = Number(localStorage.getItem('puntos') || '0');
   const mensaje =
     puntos >= 90 ? '¡Excelente trabajo, eres un genio de la biología! 🧬' :
     puntos >= 60 ? '¡Muy bien, sigue así! 💪' :
@@ -174,7 +174,6 @@ if (!preguntaActual) {
         <button
           className="flex items-center gap-2 text-green-800 font-semibold hover:underline hover:text-green-900 transition"
           onClick={() => {
-            localStorage.removeItem('puntos');
             navigate('/temas');
             window.location.reload();
           }}
