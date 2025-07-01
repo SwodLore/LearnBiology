@@ -101,10 +101,18 @@ export const Temas = () => {
           </motion.div>
         ))}
       </div>
+      <div className="mt-10 flex justify-center w-full">
+        <button
+          className="px-8 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition text-xl font-bold"
+          onClick={() => window.location.href = '/juego'}
+        >
+          Juego
+        </button>
+      </div>
       <div className="fixed bottom-4 right-4 flex items-center gap-3 z-50">
         <BioBuddy size="w-20" />
         <div className="bg-white/80 text-green-900 rounded-xl px-4 py-2 shadow-lg font-semibold max-w-xs">
-          “¡Vamos {nombre || 'explorador'}! La biología está llena de sorpresas. 🌿🔬”
+          "¡Vamos {nombre || 'explorador'}! La biología está llena de sorpresas. 🌿🔬"
         </div>
       </div>
     </div>

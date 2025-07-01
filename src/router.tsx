@@ -8,6 +8,8 @@ import { PreguntasSistemaCirculatorio } from './assets/views/Preguntas/Preguntas
 import { PreguntasSistemaRespiratorio } from './assets/views/Preguntas/PreguntasSistemaRespiratorio'
 import { PreguntasGenetica } from './assets/views/Preguntas/PreguntasGenetica'
 import { PreguntasMicrobiologia } from './assets/views/Preguntas/PreguntasMicrobiologia'
+import Juego from './assets/views/Juego'
+
 
 export const Router = () => {
 
@@ -24,6 +26,7 @@ export const Router = () => {
           <Route path="/preguntas/genetica" element={<PreguntasGenetica />} />
           <Route path="/preguntas/microbiologia" element={<PreguntasMicrobiologia />} />
         </Route>
+        <Route path="/juego" element={<Juego />} />
       </Routes>
     </BrowserRouter>
   )
