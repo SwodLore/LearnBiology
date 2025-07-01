@@ -104,7 +104,7 @@ export const Temas = () => {
       <div className="mt-10 flex justify-center w-full">
         <button
           className="px-8 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition text-xl font-bold"
-          onClick={() => window.location.href = '/juego'}
+          onClick={() => navigate('/juego')}
         >
           Juego
         </button>
