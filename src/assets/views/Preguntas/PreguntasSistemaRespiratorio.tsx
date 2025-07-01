@@ -173,7 +173,6 @@ export const PreguntasSistemaRespiratorio = () => {
           className="flex items-center gap-2 text-blue-800 font-semibold hover:underline hover:text-blue-900 transition"
           onClick={() => {
             navigate('/temas');
-            window.location.reload();
           }}
         >
           ← Volver a temas

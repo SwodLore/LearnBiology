@@ -175,7 +175,6 @@ if (!preguntaActual) {
           className="flex items-center gap-2 text-green-800 font-semibold hover:underline hover:text-green-900 transition"
           onClick={() => {
             navigate('/temas');
-            window.location.reload();
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

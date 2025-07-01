@@ -174,7 +174,6 @@ export const PreguntasGenetica = () => {
           className="flex items-center gap-2 text-purple-800 font-semibold hover:underline hover:text-purple-900 transition"
           onClick={() => {
             navigate('/temas');
-            window.location.reload();
           }}
         >
           ← Volver a temas

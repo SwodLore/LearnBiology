@@ -171,7 +171,6 @@ export const PreguntasMicrobiologia = () => {
           className="flex items-center gap-2 text-lime-800 font-semibold hover:underline hover:text-lime-900 transition"
           onClick={() => {
             navigate('/temas');
-            window.location.reload();
           }}
         >
           ← Volver a temas
