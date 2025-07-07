@@ -9,6 +9,7 @@ import { PreguntasSistemaRespiratorio } from './assets/views/Preguntas/Preguntas
 import { PreguntasGenetica } from './assets/views/Preguntas/PreguntasGenetica'
 import { PreguntasMicrobiologia } from './assets/views/Preguntas/PreguntasMicrobiologia'
 import Juego from './assets/views/Juego'
+import Rompecabezas from './assets/views/Rompecabezas'
 
 
 export const Router = () => {
@@ -27,6 +28,7 @@ export const Router = () => {
           <Route path="/preguntas/microbiologia" element={<PreguntasMicrobiologia />} />
         </Route>
         <Route path="/juego" element={<Juego />} />
+        <Route path="/rompecabezas" element={<Rompecabezas />} />
       </Routes>
     </BrowserRouter>
   )

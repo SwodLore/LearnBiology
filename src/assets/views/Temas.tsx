@@ -108,6 +108,12 @@ export const Temas = () => {
         >
           Juego
         </button>
+        <button
+          className="px-8 py-3 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition text-xl font-bold"
+          onClick={() => navigate('/rompecabezas')}
+        >
+          Rompecabeza
+        </button>
       </div>
       <div className="fixed bottom-4 right-4 flex items-center gap-3 z-50">
         <BioBuddy size="w-20" />
